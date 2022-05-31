@@ -2,7 +2,6 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import tkinter as tk
 
-
 def change_to_bipG(G, M, NodesA, NodesB, MNodes):
     BP = nx.DiGraph()  # made the graph nodes
     BP.add_nodes_from(NodesA, bipartite=0)
