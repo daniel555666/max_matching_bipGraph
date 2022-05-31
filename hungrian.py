@@ -182,15 +182,16 @@ def runGUI():
     def helloCallBack():
         print("Hello")
 
-    A_label = tk.Label(top, text="A (only alphabetic characters)")
-    A_label.pack()
-    A_textBox = tk.Entry(top, bd=5)
-    A_textBox.pack()
 
-    B_label = tk.Label(top, text="B (only numeric characters)")
+    B_label = tk.Label(top, text="A (only numeric characters)")
     B_label.pack()
     B_textBox = tk.Entry(top, bd=5)
     B_textBox.pack()
+
+    A_label = tk.Label(top, text="B (only alphabetic characters)")
+    A_label.pack()
+    A_textBox = tk.Entry(top, bd=5)
+    A_textBox.pack()
 
     edges_label = tk.Label(top, text="EDGES")
     edges_label.pack()
