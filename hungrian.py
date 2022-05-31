@@ -59,7 +59,11 @@ def rec_agumnting_path(BP, MNodes, NodesA, NodeB, pathNodes):
     if pathNodes[len(pathNodes) - 1] in NodeB and pathNodes[len(pathNodes) - 1] not in MNodes:
         return pathNodes
     for e in BP.edges():
-        if e[0] == pathNodes[len(pathNodes) - 1]:
+        if e[0] == pathNodes[len(pathNodes) - 1] and e[1]not in MNodes: #for get the path with the 2 sides not in M first
+            pathNodes.insert(len(pathNodes), e[1])
+            return rec_agumnting_path(BP, MNodes, NodesA, NodeB, pathNodes)
+    for e in BP.edges():
+        if e[0] == pathNodes[len(pathNodes) - 1]: #keep the path
             pathNodes.insert(len(pathNodes), e[1])
             return rec_agumnting_path(BP, MNodes, NodesA, NodeB, pathNodes)
 
