@@ -120,7 +120,7 @@ def get_matching(B):
         num_of_plots += 1
         # updates.append(update)
 
-        # change the matching
+        # change the matching to the new matching
         for e in M:
             if e[0] in better_path or e[1] in better_path:
                 M.remove(e)
