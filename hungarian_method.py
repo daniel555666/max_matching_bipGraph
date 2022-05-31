@@ -2,6 +2,9 @@ import networkx as nx
 import matplotlib.pyplot as plt
 import tkinter as tk
 
+
+# change our graph to bipartite graph
+# that all paths are augmenting paths
 def change_to_bipG(G, M, NodesA, NodesB, MNodes):
     BP = nx.DiGraph()  # made the graph nodes
     BP.add_nodes_from(NodesA, bipartite=0)
@@ -42,7 +45,8 @@ def change_to_bipG(G, M, NodesA, NodesB, MNodes):
     # plt.draw()
     return BP
 
-
+# find the augmenting path in the bipartite graph
+# return the path with nodes list
 def agumnting_path(BP, MNodes, NodesA, NodeB):
     pathNodes = []
     for e in BP.edges():
@@ -54,6 +58,7 @@ def agumnting_path(BP, MNodes, NodesA, NodeB):
     return []  # if didnt found
 
 
+# a recursive function to find the augmenting path for the travel on the bipartite graph
 def rec_agumnting_path(BP, MNodes, NodesA, NodeB, pathNodes):
     if pathNodes[len(pathNodes) - 1] in NodeB and pathNodes[len(pathNodes) - 1] not in MNodes:
         return pathNodes
@@ -69,14 +74,7 @@ def rec_agumnting_path(BP, MNodes, NodesA, NodeB, pathNodes):
     return []  # if didnt found
 
 
-def showGui(BP):
-    pos = nx.bipartite_layout(BP, [1, 2, 3], align='vertical', scale=2)
-    nx.draw_networkx_nodes(BP, pos, nodelist=BP.nodes(), node_color='r', node_size=500)
-    nx.draw_networkx_edges(BP, pos, width=1.0, alpha=0.5)
-    nx.draw_networkx_labels(BP, pos, font_size=16)
-    plt.show()
-
-
+# start the algorithem for finding maxium matching
 def get_matching(B):
     M = []
 
@@ -103,7 +101,6 @@ def get_matching(B):
         # fig = plt.figure()
         #   timer = fig.canvas.new_timer(interval=300)
         #   timer.add_callback(showGui(BP))
-
         better_path = agumnting_path(BP, MNodes, NodesA, NodesB)
         print(better_path)
 
@@ -134,13 +131,13 @@ def get_matching(B):
     return M
 
 
-
+# init the graph from the user , and begin the algorithem for finding maxium matching
+# and print the matching
 def run_algo (a_nodes, b_nodes, edges):
     plt.clf()
     B = nx.Graph()
     B.add_nodes_from(a_nodes, bipartite=0)
     B.add_nodes_from(b_nodes, bipartite=1)
-    # red_edges = [(1, 'a'), (1, 'b'), (2, 'c'), (2, 'd'), (3, 'b'), (3, 'd'), (4, 'a'), (4, 'c')]
     B.add_edges_from(edges)
     layout = nx.bipartite_layout(B, a_nodes, align='vertical', scale=2)
 
@@ -158,6 +155,8 @@ def run_algo (a_nodes, b_nodes, edges):
     plt.pause(3)
     print(M)
 
+
+# drawer of the graph
 def draw_augmented_path(G, pos, path, M):
     red_edges = []
     blue_edges = []
@@ -177,7 +176,7 @@ def draw_augmented_path(G, pos, path, M):
     nx.draw_networkx_edges(G, pos, edgelist=blue_edges, edge_color='b', arrows=True)
     nx.draw_networkx_labels(G, pos, font_size=14)
 
-# import tkMessageBox
+# the gui is using matplotlib to draw the graph and tkinter for the GUI controller
 from tkinter import *
 def runGUI():
     top = tk.Tk()
