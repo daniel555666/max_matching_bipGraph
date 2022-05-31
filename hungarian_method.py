@@ -125,8 +125,8 @@ def get_matching(B):
             if e[0] in better_path or e[1] in better_path:
                 M.remove(e)
         for i in range(len(better_path))[0::2]:
-            if (i % 2 == 0):
-                M.insert(len(M), (better_path[i], better_path[i + 1]))
+            #if (i % 2 == 0):
+            M.insert(len(M), (better_path[i], better_path[i + 1]))
 
     return M
 
