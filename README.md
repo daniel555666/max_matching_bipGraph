@@ -45,7 +45,7 @@ B vertices :
 
 Edges : 
 
-``` (a,1) (a,2) (a,3) (a,4) (a,5) (b,1) (b,2) (b,3) (b,4) (b,5) (c,1) (c,2) (c,3) (c,4) (c,5) (d,1) (d,2) (d,3) (d,4) (d,5) (e,1) (e,2) (e,3) (e,4) (e,5) ```
+```(a,1) (a,2) (a,3) (a,4) (a,5) (b,1) (b,2) (b,3) (b,4) (b,5) (c,1) (c,2) (c,3) (c,4) (c,5) (d,1) (d,2) (d,3) (d,4) (d,5) (e,1) (e,2) (e,3) (e,4) (e,5)```
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
