@@ -31,7 +31,7 @@ add the vertices and the edges, divide them with spaces , for example :
 
 
 
-then press ok to launch the algorithm : 
+then press ok to launch the algorithm
 
 
 
