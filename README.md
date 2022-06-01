@@ -34,6 +34,7 @@ then press ok to launch the algorithm
 
 ## Ready input graphs : 
 Clique of (5,5) : 
+
 A vertices :
 
 ```1 2 3 4 5```
