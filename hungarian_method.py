@@ -3,15 +3,28 @@ import matplotlib.pyplot as plt
 import tkinter as tk
 
 
+# When we have bipartite graph we want to find the max edge matching:
+# The hungarian method serching for argumenting path on the graph and change the edges it take
+# By using the graph as directed graph we can to look if there is a better path
+ 
+ 
+# cases for making the directed graph if there is undricted edge between them we will make it directed as following:
+# (node from A but not from M) --> (node from B)
+# (node from A and from M) --> (node from B and from M) - if the nodes pointing to another group this mean that this edge is already need to be part of the matching.
+# All the node in the matching point from B to A.
+
 # change our graph to bipartite graph
 # that all paths are augmenting paths
+
+# The function get: 1.graph(G) 2. edges of the matching (M), 3. The vertecies of the group A on the grpah(NodesA) 4. The vertecies of the group B on the grpah(NodesB) , 5.vertices of the matching (MNodes)
 def change_to_bipG(G, M, NodesA, NodesB, MNodes):
     BP = nx.DiGraph()  # made the graph nodes
     BP.add_nodes_from(NodesA, bipartite=0)
     BP.add_nodes_from(NodesB, bipartite=1)
-    for e in G.edges():
-
-        if e[0] not in MNodes and e[0] in NodesA:  # A\M out edges
+    for e in G.edges(): ## tuple of the nodes of the edge
+        
+         # A\M out edges
+        if e[0] not in MNodes and e[0] in NodesA: 
             BP.add_edges_from([e])
             continue
         if e[1] not in MNodes and e[1] in NodesA:
@@ -26,7 +39,8 @@ def change_to_bipG(G, M, NodesA, NodesB, MNodes):
             BP.add_edges_from([(e[1], e[0])])
             continue
 
-        if e in M:  # edges of M
+        # edges of M
+        if e in M:  
             if e[0] in NodesA:
                 BP.add_edges_from([(e[1], e[0])])
             else:
@@ -40,16 +54,16 @@ def change_to_bipG(G, M, NodesA, NodesB, MNodes):
     pos = nx.bipartite_layout(BP, [1, 2, 3, 4], align='vertical', scale=2)
     nx.draw_networkx_nodes(BP, pos, nodelist=BP.nodes(), node_color='r', node_size=500)
     nx.draw_networkx_edges(BP, pos, width=1.0, alpha=0.5)
-    #
     nx.draw_networkx_labels(BP, pos, font_size=16)
     # plt.draw()
     return BP
 
-# find the augmenting path in the bipartite graph
+# find the augmenting path in the bipartite graph.
 # return the path with nodes list
 def agumnting_path(BP, MNodes, NodesA, NodeB):
     pathNodes = []
     for e in BP.edges():
+        # search for node on A\m and send its edge for looking id it is connecting to node in B\m 
         if e[0] in NodesA and e[0] not in MNodes:
             pathNodes.insert(len(pathNodes), e[0])
             pathNodes.insert(len(pathNodes), e[1])
@@ -60,12 +74,15 @@ def agumnting_path(BP, MNodes, NodesA, NodeB):
 
 # a recursive function to find the augmenting path for the travel on the bipartite graph
 def rec_agumnting_path(BP, MNodes, NodesA, NodeB, pathNodes):
+    # if the node we insert at the end of the list ending in B\M we find augmenting path and we done.
     if pathNodes[len(pathNodes) - 1] in NodeB and pathNodes[len(pathNodes) - 1] not in MNodes:
         return pathNodes
+    # else we serch if there is edge that exit from the same vertex and not on the current matching M, if it is we will add the vertex and keep serching from this position edge ending in B\M
     for e in BP.edges():
         if e[0] == pathNodes[len(pathNodes) - 1] and e[1]not in MNodes: #for get the path with the 2 sides not in M first
             pathNodes.insert(len(pathNodes), e[1])
             return rec_agumnting_path(BP, MNodes, NodesA, NodeB, pathNodes)
+    
     for e in BP.edges():                         #we can return visit to BNodes but not to ANodes
         if e[0] == pathNodes[len(pathNodes) - 1] and((e[1] in NodeB) or (e[1]not in pathNodes and e[1]in NodesA)): #keep the path and take vertex we didint visit
             pathNodes.insert(len(pathNodes), e[1])
@@ -134,7 +151,7 @@ def get_matching(B):
     return M
 
 
-# init the graph from the user , and begin the algorithem for finding maxium matching
+# init the graph from the user , begin the algorithem for finding maximum matching
 # and print the matching
 def run_algo (a_nodes, b_nodes, edges):
     plt.clf()
