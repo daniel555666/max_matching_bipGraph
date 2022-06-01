@@ -26,7 +26,10 @@ python3 hungarian_method.py
 ## Input
 
 add the vertices and the edges, divide them with spaces , for example : 
-![image](https://user-images.githubusercontent.com/66936716/171354129-0dd22ed5-cad5-4d2f-af2f-eb2340ab576a.png)
+![image](https://user-images.githubusercontent.com/66936716/171354747-d50cca8a-f94d-4fb2-af43-4895b4fc8e7a.png)
+
+then press ok to launch the algorithm : 
+
 
 
 ## License
