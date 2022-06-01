@@ -26,7 +26,9 @@ python3 hungarian_method.py
 ## Input
 
 add the vertices and the edges, divide them with spaces , for example : 
-![image](https://user-images.githubusercontent.com/66936716/171354747-d50cca8a-f94d-4fb2-af43-4895b4fc8e7a.png)
+![image](https://user-images.githubusercontent.com/66936716/171355326-020182f4-bda3-4544-a6c4-ccbf401b28ce.png)
+
+
 
 then press ok to launch the algorithm : 
 
