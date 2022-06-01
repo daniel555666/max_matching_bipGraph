@@ -1,6 +1,7 @@
 # Max Matching in Biparatite Graph
 ## By Yakov Khodorkovski , Daniel Zaken and Aviad Gilboa 
 The Hungarian maximum matching algorithm, is an algorithm that can be used to find maximum matchings in bipartite graphs. 
+![gif_hung](https://user-images.githubusercontent.com/66936716/171358041-bee96a16-efaa-489b-872b-3b9c4392e219.gif)
 
 ## Installation
 
