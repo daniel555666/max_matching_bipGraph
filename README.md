@@ -23,25 +23,11 @@ then run the program using the command line :
 python3 hungarian_method.py 
 ```
 
-## Usage
+## Input
 
-```python
-import foobar
+add the vertices and the edges, divide them with spaces , for example : 
+![image](https://user-images.githubusercontent.com/66936716/171354129-0dd22ed5-cad5-4d2f-af2f-eb2340ab576a.png)
 
-# returns 'words'
-foobar.pluralize('word')
-
-# returns 'geese'
-foobar.pluralize('goose')
-
-# returns 'phenomenon'
-foobar.singularize('phenomena')
-```
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
